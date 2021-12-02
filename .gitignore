@@ -1,3 +1,4 @@
 .eggs
 aoc.egg-info
 venv
+__pycache__
