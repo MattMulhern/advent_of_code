@@ -26,3 +26,10 @@ def file_to_list_of_str_tuples(filename):
     with open(filename, "r") as fp:
         lines = fp.readlines()
         return [tuple(x.split()) for x in lines]
+
+
+def file_to_list_of_strings(filename):
+    logger.debug(f"parsing {filename}")
+    with open(filename, "r") as fp:
+        lines = fp.readlines()
+        return [x.strip() for x in lines]
