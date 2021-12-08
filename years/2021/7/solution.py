@@ -5,7 +5,7 @@ import aoc
 import numpy as np
 import sys
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger('2021:d6')
+logger = logging.getLogger('2021:d7')
 logger.setLevel(logging.INFO)
 
 CWD = os.path.dirname(os.path.abspath(__file__))
