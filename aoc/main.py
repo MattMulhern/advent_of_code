@@ -44,3 +44,12 @@ def file_to_list_of_int_lists(filename):
             line = line.strip().split(',')
             new_lines.append([int(x) for x in line])
         return new_lines
+
+def file_to_2d_list(filename):
+    logger.info(f"parsing {filename}")
+    new_lines = []
+    with open(filename, "r") as fp:
+        lines = fp.readlines()
+        for line in lines:
+            new_lines.append(list(line.strip()))
+    return new_lines
