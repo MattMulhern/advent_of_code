@@ -53,3 +53,10 @@ def file_to_2d_list(filename):
         for line in lines:
             new_lines.append(list(line.strip()))
     return new_lines
+
+
+def file_to_list_of_strings(filename):
+    logger.info(f"parsing {filename}")
+    with open(filename, "r") as fp:
+        lines = fp.readlines()
+        return  [list(x.strip()) for x in lines]
