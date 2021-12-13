@@ -2,18 +2,18 @@
 import logging
 import os
 import aoc
-import numpy as np
-from pprint import pprint
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('2021:d11')
 logger.setLevel(logging.DEBUG)
 
 CWD = os.path.dirname(os.path.abspath(__file__))
 
+
 def flash_surrounding(flash):
     flashed = []
     directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (+1, 0), (1, 1)]
-    
+
     for direction in directions:
         i = direction[0] + flash[0]
         j = direction[1] + flash[1]
@@ -22,8 +22,8 @@ def flash_surrounding(flash):
             if grid[i][j] == 10:
                 flashed.append((i, j))
     return flashed
-          
-            
+
+
 def iterate(grid):
     total_flashes = 0
     iterations = 0
@@ -39,13 +39,13 @@ def iterate(grid):
             flashed += flash_surrounding(flash)
         total_flashes += len(flashed)
         iterations += 1
-    
+
         if iterations == 100:
             flashes_after_100_iterations = total_flashes
-    
+
         if len(flashed) == 100:
             return flashes_after_100_iterations, iterations
-        
+
         for y, x in flashed:
             grid[y][x] = 0
 
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     logger.info(f"iterations until synchronization: {iterations_until_sync}")
     assert flashes_after_100_iterations == 1656
     assert iterations_until_sync == 195
-    
+
     grid = aoc.file_to_2d_list_of_ints(os.path.join(CWD, 'input.txt'))
     flashes_after_100_iterations, iterations_until_sync = iterate(grid)
     logger.info(f"flashes after 100 iterations: {flashes_after_100_iterations}")
