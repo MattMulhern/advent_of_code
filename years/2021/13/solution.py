@@ -5,7 +5,7 @@ import ipdb
 import numpy as np
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger('2021:d12')
+logger = logging.getLogger('2021:d13')
 logger.setLevel(logging.DEBUG)
 
 CWD = os.path.dirname(os.path.abspath(__file__))
