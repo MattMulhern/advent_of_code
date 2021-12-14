@@ -4,7 +4,7 @@ import os
 from collections import Counter
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger('2021:d12')
+logger = logging.getLogger('2021:d14')
 logger.setLevel(logging.DEBUG)
 
 CWD = os.path.dirname(os.path.abspath(__file__))
@@ -43,8 +43,36 @@ def grow_polymer(poly, rules):
     return ''.join(new_poly)
 
 
+def grow_by_count(poly, rules, iterations):
+    element_counter = Counter(poly)
+    pairs = Counter(poly[i:i + 2] for i in range(len(poly) - 1))
+
+    for step in range(iterations):
+        new_poly = Counter()
+        for pair, count in pairs.items():
+            if pair in rules:
+                left, right = pair
+                new_poly[pair[0] + rules[pair]] += count
+                new_poly[rules[pair] + pair[1]] += count
+                element_counter[rules[pair]] += count
+            else:
+                new_poly[pair] = count
+        pairs = new_poly
+    return element_counter
+
+
+def part_two(poly, rules):
+    element_counter = grow_by_count(poly, rules, 40)
+    ordered = element_counter.most_common()
+    diff = ordered[0][1] - ordered[-1][1]
+    logger.info(f"{ordered[0][0]}({ordered[0][1]}) - {ordered[-1][0]}({ordered[-1][1]}) = {diff}")
+    return diff
+
+
 if __name__ == "__main__":
     template, rules = parse_ploymer(os.path.join(CWD, 'example.txt'))
     assert part_one(template, rules) == 1588
+    assert part_two(template, rules) == 2188189693529
     template, rules = parse_ploymer(os.path.join(CWD, 'input.txt'))
-    assert part_one(template, rules) == 1588
+    assert part_one(template, rules) == 2003
+    assert part_two(template, rules) == 2276644000111
