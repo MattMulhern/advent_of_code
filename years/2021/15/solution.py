@@ -10,12 +10,14 @@ logger.setLevel(logging.DEBUG)
 
 CWD = os.path.dirname(os.path.abspath(__file__))
 
+
 def parse_grid_file(filename):
+    logger.info(f"parsing {filename}")
     with open(filename, 'r') as fp:
         grid = []
         for line in fp.readlines():
             grid.append([int(x) for x in list(line.strip())])
-        return np.array(grid)    
+        return np.array(grid)
 
 
 def part_one(grid):
@@ -25,7 +27,7 @@ def part_one(grid):
 
     start = (0, 0)
     end = (len(grid)-1, len(grid)-1)
-    path = nx.shortest_path_length(graph, start, end, weight="weight")   
+    path = nx.shortest_path_length(graph, start, end, weight="weight")
     logger.info(f"shortest path: {path}")
     return path
 
