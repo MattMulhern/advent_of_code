@@ -26,6 +26,6 @@ if __name__ == "__main__":
     assert part_one(my_input) == 123
     assert part_two(my_input) == 123
 
-    chunks = parse_file(os.path.join(CWD, "input.txt"))
+    my_input = parse_file(os.path.join(CWD, "input.txt"))
     assert part_one(my_input) == 123
     assert part_two(my_input) == 123
