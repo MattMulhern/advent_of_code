@@ -2,3 +2,4 @@
 aoc.egg-info
 venv
 __pycache__
+.DS_Store
