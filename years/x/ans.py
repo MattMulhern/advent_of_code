@@ -13,11 +13,11 @@ def parse_file(filename):
         return chunks
 
 
-def part_one(chunks):
+def part_one(my_input):
     logger = logging.getLogger("2022:dX:p1")
 
 
-def part_two(chunks):
+def part_two(my_input):
     logger = logging.getLogger("2022:dX:p2")
 
 
