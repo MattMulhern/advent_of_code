@@ -5,7 +5,7 @@ Some advent of code solutions. A simple helper lib is available here too.
 ### installation / usage example
 ```
 > python -m venv venv
-> ./venv/bin/activate
+> . ./venv/bin/activate
 > python setup.py develop
 > ./years/2021/2/solution.py 
 INFO:2021:d2:example.txt
